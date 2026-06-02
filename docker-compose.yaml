@@ -1,6 +1,6 @@
 services:
   backend:
-    image: node:22-alpine
+    image: node:24.16.0-alpine3.22
     working_dir: /app
     ports:
       - "9100:3000"
@@ -18,7 +18,7 @@ services:
         condition: service_healthy
 
   frontend:
-    image: node:22-alpine
+    image: node:24.16.0-alpine3.22
     working_dir: /app
     ports:
       - "5173:5173"
