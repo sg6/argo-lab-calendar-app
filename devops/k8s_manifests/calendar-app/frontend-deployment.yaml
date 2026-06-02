@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: ghcr.io/sg6/argo-lab-calendar-app-frontend:0.0.2
+          image: ghcr.io/sg6/argo-lab-calendar-app-frontend:dev-0.0.3
           imagePullPolicy: IfNotPresent
           ports:
             - name: http

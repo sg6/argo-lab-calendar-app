@@ -121,6 +121,15 @@ docker build -t k8s-argo-labs-frontend ./frontend
 
 The backend image runs the compiled NestJS app on port `3000`. The frontend image serves the Vite build with nginx on port `80`.
 
+Deployed version checks:
+
+```text
+http://localhost:8080/version
+http://localhost:8080/version.txt
+```
+
+The backend `/version` endpoint reads the backend `package.json` version from the running image. The frontend `/version.txt` file is generated during `npm run build` from the frontend `package.json` version.
+
 ## GitHub Container Publishing
 
 The workflow at `.github/workflows/publish-containers.yml` publishes images to GitHub Container Registry.
@@ -184,8 +193,8 @@ http://localhost:8080
 Before using it, replace these placeholders:
 
 - `https://github.com/sg6/argo-lab-calendar-app.git`
-- `ghcr.io/sg6/argo-lab-calendar-app-backend:dev-0.0.1`
-- `ghcr.io/sg6/argo-lab-calendar-app-frontend:dev-0.0.0`
+- `ghcr.io/sg6/argo-lab-calendar-app-backend:dev-0.0.3`
+- `ghcr.io/sg6/argo-lab-calendar-app-frontend:dev-0.0.3`
 - the secret values in `calendar-app/*secret.yaml`
 
 ## Database

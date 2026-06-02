@@ -19,7 +19,7 @@ spec:
     spec:
       initContainers:
         - name: prisma-db-push
-          image: ghcr.io/sg6/argo-lab-calendar-app-backend:0.0.2
+          image: ghcr.io/sg6/argo-lab-calendar-app-backend:dev-0.0.3
           command:
             - npx
             - prisma
@@ -30,7 +30,7 @@ spec:
                 name: calendar-backend-secret
       containers:
         - name: backend
-          image: ghcr.io/sg6/argo-lab-calendar-app-backend:0.0.2
+          image: ghcr.io/sg6/argo-lab-calendar-app-backend:dev-0.0.3
           imagePullPolicy: IfNotPresent
           ports:
             - name: http

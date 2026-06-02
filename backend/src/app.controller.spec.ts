@@ -17,4 +17,14 @@ describe('AppController', () => {
       expect(appController.health()).toEqual({ ok: true, service: 'calendar-api' });
     });
   });
+
+  describe('version', () => {
+    it('should return package version information', () => {
+      expect(appController.version()).toEqual({
+        service: 'calendar-api',
+        version: '0.0.3',
+        imageTag: 'dev-0.0.3',
+      });
+    });
+  });
 });
