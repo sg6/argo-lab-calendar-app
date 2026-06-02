@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calendar-frontend
+  namespace: calendar-app
+  labels:
+    app.kubernetes.io/name: calendar-frontend
+    app.kubernetes.io/part-of: calendar-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: calendar-frontend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: calendar-frontend
+        app.kubernetes.io/part-of: calendar-app
+    spec:
+      containers:
+        - name: frontend
+          image: ghcr.io/sg6/argo-lab-calendar-app-frontend:dev-0.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 20

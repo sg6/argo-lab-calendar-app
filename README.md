@@ -152,6 +152,29 @@ ghcr.io/<owner>/<repo>-backend:dev-0.0.1
 ghcr.io/<owner>/<repo>-frontend:dev-0.0.0
 ```
 
+## GitOps Deployment
+
+Kubernetes manifests live in:
+
+```text
+devops/k8s_manifests
+```
+
+The layout is built for Argo CD:
+
+- `root-application.yaml` bootstraps the app-of-apps setup.
+- `applications/cnpg-operator.yaml` installs the CloudNativePG operator from the official Helm chart.
+- `applications/calendar-app.yaml` syncs the calendar application manifests.
+- `calendar-app/` contains the namespace, CNPG database cluster, backend, frontend, services, and ingress.
+
+Before using it, replace these placeholders:
+
+- `https://github.com/sg6/argo-lab-calendar-app.git`
+- `ghcr.io/sg6/argo-lab-calendar-app-backend:dev-0.0.1`
+- `ghcr.io/sg6/argo-lab-calendar-app-frontend:dev-0.0.0`
+- `calendar.example.com`
+- the secret values in `calendar-app/*secret.yaml`
+
 ## Database
 
 Prisma schema location:

@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: calendar-root
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/sg6/argo-lab-calendar-app.git
+    targetRevision: main
+    path: devops/k8s_manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
