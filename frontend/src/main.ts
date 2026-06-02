@@ -17,7 +17,7 @@ type AuthResponse = {
   token: string;
 };
 
-const apiUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:3000';
+const apiUrl = import.meta.env.VITE_API_URL ?? window.location.origin;
 const tokenKey = 'calendar_token';
 const userKey = 'calendar_user';
 

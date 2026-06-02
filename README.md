@@ -163,16 +163,29 @@ devops/k8s_manifests
 The layout is built for Argo CD:
 
 - `root-application.yaml` bootstraps the app-of-apps setup.
+- `applications/gateway-api-crds.yaml` installs the Kubernetes Gateway API CRDs.
+- `applications/traefik.yaml` installs Traefik with the Gateway API provider enabled.
 - `applications/cnpg-operator.yaml` installs the CloudNativePG operator from the official Helm chart.
 - `applications/calendar-app.yaml` syncs the calendar application manifests.
-- `calendar-app/` contains the namespace, CNPG database cluster, backend, frontend, services, and ingress.
+- `calendar-app/` contains the namespace, CNPG database cluster, backend, frontend, services, Gateway, and HTTPRoute.
+
+For a running KinD cluster without host port mappings, forward Traefik locally:
+
+```bash
+kubectl -n traefik port-forward svc/traefik 8080:80
+```
+
+Then open:
+
+```text
+http://localhost:8080
+```
 
 Before using it, replace these placeholders:
 
 - `https://github.com/sg6/argo-lab-calendar-app.git`
 - `ghcr.io/sg6/argo-lab-calendar-app-backend:dev-0.0.1`
 - `ghcr.io/sg6/argo-lab-calendar-app-frontend:dev-0.0.0`
-- `calendar.example.com`
 - the secret values in `calendar-app/*secret.yaml`
 
 ## Database

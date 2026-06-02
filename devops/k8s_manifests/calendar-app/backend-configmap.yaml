@@ -4,5 +4,5 @@ metadata:
   name: calendar-backend-config
   namespace: calendar-app
 data:
-  FRONTEND_ORIGIN: https://calendar.example.com
+  FRONTEND_ORIGIN: http://localhost:8080
   PORT: "3000"
