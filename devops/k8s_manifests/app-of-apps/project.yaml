@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: my-first-webserver
+  namespace: argocd
+spec:
+  destinations:
+  - name: '*'
+    namespace: my-first-namespace
+    server: https://kubernetes.default.svc
+  namespaceResourceWhitelist:
+  - group: apps
+    kind: Deployment    
