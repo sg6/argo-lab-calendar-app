@@ -6,21 +6,21 @@ metadata:
 spec:
   generators:
   - git:
-    repoURL: https://github.com/sg6/argo-lab-calendar-app
-    revision: HEAD
-    directories:
-    - path: devops/k8s_manifests/app-of-apps/appset-apps/*
+      repoURL: https://github.com/sg6/argo-lab-calendar-app
+      revision: HEAD
+      directories:
+      - path: devops/k8s_manifests/app-of-apps/appset-apps/*
   template:
     metadata:
-      name: podinfo
+      name: '{{path.basename}}'
       namespace: argocd
     spec:
       destination:
-        namespace: podinfo
+        namespace: '{{path.basename}}'
         server: https://kubernetes.default.svc
       project: default
       source:
-        path: devops/k8s_manifests/app-of-apps/apps/podinfo
+        path: '{{path}}'
         repoURL: https://github.com/sg6/argo-lab-calendar-app.git
         targetRevision: HEAD
       syncPolicy:
