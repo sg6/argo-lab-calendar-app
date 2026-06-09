@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: apps/podinfo
+    path: devops/k8s_manifests/app-of-apps/apps/podinfo
     repoURL: https://github.com/thschue/my-new-gitops-repo
     targetRevision: HEAD
   syncPolicy:

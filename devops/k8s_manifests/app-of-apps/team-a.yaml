@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: my-first-webserver
   source:
-    path: .
+    path: devops/k8s_manifests/app-of-apps/
     repoURL: https://github.com/thschue/my-team-repo
     targetRevision: HEAD
   syncPolicy:
