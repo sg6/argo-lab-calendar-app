@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: apps
+  namespace: argocd
+spec:
+  generators:
+  - git:
+    repoURL: https://github.com/sg6/argo-lab-calendar-app
+    revision: HEAD
+    directories:
+    - path: devops/k8s_manifests/app-of-apps/appset-apps/*
+  template:
+    metadata:
+      name: podinfo
+      namespace: argocd
+    spec:
+      destination:
+        namespace: podinfo
+        server: https://kubernetes.default.svc
+      project: default
+      source:
+        path: apps/podinfo
+        repoURL: https://github.com/thschue/my-new-gitops-repo
+        targetRevision: HEAD
+      syncPolicy:
+        automated:
+          enabled: true
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true   
+      
