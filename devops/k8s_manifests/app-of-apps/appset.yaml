@@ -20,8 +20,8 @@ spec:
         server: https://kubernetes.default.svc
       project: default
       source:
-        path: apps/podinfo
-        repoURL: https://github.com/thschue/my-new-gitops-repo
+        path: devops/k8s_manifests/app-of-apps/apps/podinfo
+        repoURL: https://github.com/sg6/argo-lab-calendar-app.git
         targetRevision: HEAD
       syncPolicy:
         automated:

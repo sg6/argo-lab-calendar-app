@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: devops/k8s_manifests/app-of-apps/apps/nginx
-    repoURL: https://github.com/thschue/my-new-gitops-repo
+    repoURL: devops/k8s_manifests/app-of-apps
     targetRevision: HEAD
   syncPolicy:
     automated:

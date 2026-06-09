@@ -10,7 +10,7 @@ spec:
   project: my-first-webserver
   source:
     path: devops/k8s_manifests/app-of-apps/
-    repoURL: https://github.com/thschue/my-team-repo
+    repoURL: devops/k8s_manifests/app-of-apps
     targetRevision: HEAD
   syncPolicy:
     automated:
